@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "David's A11y Tools",
+  "version": "1.0",
+  "description": "Blah blah",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "debugger",
+    "storage",
+    "unlimitedStorage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["*://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "256": "assets/images/icon@256w.png",
+    "128": "assets/images/icon@128w.png",
+    "48": "assets/images/icon@48w.png",
+    "16": "assets/images/icon@16w.png"
+  },
+  "incognito": "split",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["axe.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "minimum_chrome_version": "100",
+  "devtools_page": "devtools.html",
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
